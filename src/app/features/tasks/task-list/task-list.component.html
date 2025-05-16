@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Lista de Tarefas</h2>
+
+  <div class="actions">
+    <button (click)="createNewTask()">Nova Tarefa</button>
+  </div>
+
+  <div *ngIf="taskStore.loading()">Carregando...</div>
+
+  <div *ngIf="taskStore.error()" class="error">
+    Erro: {{ taskStore.error() }}
+  </div>
+
+  <table *ngIf="!taskStore.loading() && taskStore.tasks().length > 0">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of taskStore.tasks()">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.completed ? "Completa" : "Pendente" }}</td>
+        <td>
+          <button (click)="viewTask(task.id)">Ver</button>
+          <button (click)="editTask(task.id)">Editar</button>
+          <button (click)="deleteTask(task.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    *ngIf="!taskStore.loading() && taskStore.tasks().length === 0"
+    class="no-data"
+  >
+    Nenhuma tarefa encontrada.
+  </div>
+</div>
