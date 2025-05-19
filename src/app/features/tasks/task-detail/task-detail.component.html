@@ -1,1 +1,58 @@
-<p>task-detail works!</p>
+<div class="container">
+  <h2>Detalhes da Tarefa</h2>
+
+  <div *ngIf="taskStore.loading()">Carregando...</div>
+
+  <div *ngIf="taskStore.error()" class="error">
+    Erro: {{ taskStore.error() }}
+  </div>
+
+  <div
+    *ngIf="!taskStore.loading() && taskStore.selectedTask()"
+    class="task-details"
+  >
+    <div class="detail-row">
+      <span class="label">Título:</span>
+      <span class="value">{{ taskStore.selectedTask()?.title }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Descrição:</span>
+      <span class="value">{{ taskStore.selectedTask()?.description }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Status:</span>
+      <span class="value">{{
+        taskStore.selectedTask()?.completed ? "Completa" : "Pendente"
+      }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Criada em:</span>
+      <span class="value">{{
+        taskStore.selectedTask()?.createdAt | date : "dd/MM/yyyy HH:mm"
+      }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Atualizada em:</span>
+      <span class="value">{{
+        taskStore.selectedTask()?.updatedAt | date : "dd/MM/yyyy HH:mm"
+      }}</span>
+    </div>
+
+    <div class="actions">
+      <button (click)="editTask()">Editar</button>
+      <button (click)="deleteTask()">Excluir</button>
+      <button (click)="goBack()">Voltar</button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="!taskStore.loading() && !taskStore.selectedTask()"
+    class="no-data"
+  >
+    Tarefa não encontrada.
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.task-details {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.detail-row {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 120px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  margin: 20px 0;
+}
+
+.no-data {
+  text-align: center;
+  margin: 20px 0;
+}
+
+button {
+  margin-right: 5px;
+}

@@ -6,7 +6,7 @@ import { CreateTaskDto, Task, UpdateTaskDto } from '../models/task.model';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'api/tasks';
+  private apiUrl = 'http://localhost:3000/tasks';
 
   constructor(private http: HttpClient) {}
 

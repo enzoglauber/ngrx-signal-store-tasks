@@ -1,112 +1,36 @@
 {
-  "users": [
+  "tasks": [
     {
-      "id": "user1",
-      "name": "Juan Pérez",
-      "email": "juan@example.com",
-      "avatar": "https://randomuser.me/api/portraits/men/17.jpg"
+      "id": "1",
+      "title": "Estudar Angular Signals 3",
+      "description": "Revisar conceitos e práticas com Signal Store 3",
+      "completed": true,
+      "createdAt": "2025-05-10T09:30:00.000Z",
+      "updatedAt": "2025-05-10T09:30:00.000Z"
     },
     {
-      "id": "user2",
-      "name": "María García",
-      "email": "maria@example.com",
-      "avatar": "https://randomuser.me/api/portraits/women/22.jpg"
-    }
-  ],
-  "accounts": [
-    {
-      "id": "acc1",
-      "accountNumber": "1234-5678-9012-3456",
-      "accountType": "CORRIENTE",
-      "balance": 5250.75,
-      "name": "Cuenta Corriente Principal",
-      "lastUpdated": "2023-09-15T10:30:45.123Z"
+      "id": "2",
+      "title": "Implementar CRUD com NgRx",
+      "description": "Finalizar a POC de tarefas usando NgRx com Signal Store",
+      "completed": true,
+      "createdAt": "2025-05-11T10:15:00.000Z",
+      "updatedAt": "2025-05-12T08:45:00.000Z"
     },
     {
-      "id": "acc2",
-      "accountNumber": "9876-5432-1098-7654",
-      "accountType": "AHORROS",
-      "balance": 12200,
-      "name": "Cuenta de Ahorros",
-      "lastUpdated": "2025-03-28T22:44:28.575Z"
+      "id": "3",
+      "title": "Testar Integração com json-server",
+      "description": "Verificar se o backend mock responde corretamente às chamadas HTTP",
+      "completed": false,
+      "createdAt": "2025-05-12T14:00:00.000Z",
+      "updatedAt": "2025-05-12T14:00:00.000Z"
     },
     {
-      "id": "acc3",
-      "accountNumber": "5555-6666-7777-8888",
-      "accountType": "CREDITO",
-      "balance": -1500.25,
-      "name": "Tarjeta de Crédito",
-      "lastUpdated": "2023-09-18T09:15:33.789Z"
-    }
-  ],
-  "transactions": [
-    {
-      "id": "tx1",
-      "accountId": "acc1",
-      "amount": 1500,
-      "type": "DEPOSIT",
-      "description": "Depósito de sueldo",
-      "date": "2023-09-15T08:30:00.000Z",
-      "category": "Ingresos",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "tx2",
-      "accountId": "acc1",
-      "amount": 250.5,
-      "type": "WITHDRAWAL",
-      "description": "Compra supermercado",
-      "date": "2023-09-16T14:45:00.000Z",
-      "category": "Alimentación",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "tx3",
-      "accountId": "acc2",
-      "amount": 2000,
-      "type": "DEPOSIT",
-      "description": "Ahorro mensual",
-      "date": "2023-09-10T10:00:00.000Z",
-      "category": "Ahorros",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "tx4",
-      "accountId": "acc3",
-      "amount": 500.25,
-      "type": "WITHDRAWAL",
-      "description": "Compra electrónica",
-      "date": "2023-09-17T16:30:00.000Z",
-      "category": "Tecnología",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "tx5",
-      "accountId": "acc1",
-      "amount": 1000,
-      "type": "TRANSFER",
-      "description": "Transferencia a cuenta de ahorros",
-      "date": "2023-09-14T11:20:00.000Z",
-      "category": "Transferencias",
-      "status": "COMPLETED",
-      "recipientInfo": {
-        "accountId": "acc2",
-        "name": "Cuenta de Ahorros"
-      }
-    },
-    {
-      "accountId": "acc1",
-      "amount": 200,
-      "type": "TRANSFER",
-      "description": "Pago",
-      "date": "2025-03-28T22:44:28.566Z",
-      "category": "Transferencias",
-      "status": "COMPLETED",
-      "recipientInfo": {
-        "accountId": "acc2",
-        "name": "Cuenta de Ahorros"
-      },
-      "id": "Nun4YY2"
+      "id": "4",
+      "title": "Documentar arquitetura da aplicação",
+      "description": "Criar documentação com explicações dos módulos e stores",
+      "completed": false,
+      "createdAt": "2025-05-13T11:20:00.000Z",
+      "updatedAt": "2025-05-13T11:20:00.000Z"
     }
   ]
 }

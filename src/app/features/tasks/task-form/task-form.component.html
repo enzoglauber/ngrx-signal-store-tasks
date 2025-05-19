@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>{{ isEditMode ? "Editar Tarefa" : "Nova Tarefa" }}</h2>
+
+  <div *ngIf="taskStore.loading()">Carregando...</div>
+
+  <div *ngIf="taskStore.error()" class="error">
+    Erro: {{ taskStore.error() }}
+  </div>
+
+  <form
+    [formGroup]="taskForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!taskStore.loading()"
+  >
+    <div class="form-group">
+      <label for="title">Título *</label>
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        class="form-control"
+      />
+      <div
+        *ngIf="submitted && taskForm.get('title')?.errors"
+        class="validation-error"
+      >
+        <div *ngIf="taskForm.get('title')?.errors?.['required']">
+          Título é obrigatório
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <div class="form-group checkbox">
+      <label>
+        <input type="checkbox" formControlName="completed" />
+        Tarefa completada
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="submitting">
+        {{ submitting ? "Salvando..." : "Salvar" }}
+      </button>
+      <button type="button" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>
