@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { TaskStoreService } from '../../../stores/task/task.store';
+
+import { TaskStoreService } from '@/app/shared/stores/task/task.store';
 
 @Component({
   selector: 'app-task-detail',

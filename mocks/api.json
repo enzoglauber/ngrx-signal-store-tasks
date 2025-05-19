@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Estudar Angular Signals 3",
-      "description": "Revisar conceitos e práticas com Signal Store 3",
+      "description": "Revisar conceitos e práticas com Signal Store",
       "completed": true,
       "createdAt": "2025-05-10T09:30:00.000Z",
       "updatedAt": "2025-05-10T09:30:00.000Z"

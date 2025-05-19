@@ -8,8 +8,9 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CreateTaskDto, UpdateTaskDto } from '../../../models/task.model';
-import { TaskStoreService } from '../../../stores/task/task.store';
+
+import { CreateTaskDto, UpdateTaskDto } from '@/app/models/task.model';
+import { TaskStoreService } from '@/app/shared/stores/task/task.store';
 
 @Component({
   selector: 'app-task-form',

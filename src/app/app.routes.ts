@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
-import { BasicLayoutComponent } from './core/layouts/basic-layout/basic-layout.component';
-import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
+import { authRoutes } from './features/auth/auth.routes';
+import { taskRoutes } from './features/tasks/task.routes';
+
+const features = [...authRoutes, ...taskRoutes];
 
 export const routes: Routes = [
   {
@@ -8,46 +10,7 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
-  {
-    path: 'auth',
-    component: BasicLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        loadComponent: () =>
-          import('./features/auth/login/login.component').then(
-            (m) => m.LoginComponent
-          ),
-      },
-    ],
-  },
-  {
-    path: 'tasks',
-    component: MainLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadComponent: () =>
-          import('./features/tasks/task-list/task-list.component').then(
-            (m) => m.TaskListComponent
-          ),
-      },
-      {
-        path: ':id',
-        loadComponent: () =>
-          import('./features/tasks/task-detail/task-detail.component').then(
-            (m) => m.TaskDetailComponent
-          ),
-      },
-      {
-        path: ':id/edit',
-        loadComponent: () =>
-          import('./features/tasks/task-form/task-form.component').then(
-            (m) => m.TaskFormComponent
-          ),
-      },
-    ],
-  },
+  ...features,
   {
     path: 'not-found',
     loadComponent: () =>

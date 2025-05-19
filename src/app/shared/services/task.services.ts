@@ -1,7 +1,7 @@
+import { CreateTaskDto, Task, UpdateTaskDto } from '@/app/models/task.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateTaskDto, Task, UpdateTaskDto } from '../models/task.model';
 @Injectable({
   providedIn: 'root',
 })

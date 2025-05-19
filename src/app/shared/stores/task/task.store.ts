@@ -1,3 +1,5 @@
+import { CreateTaskDto, UpdateTaskDto } from '@/app/models/task.model';
+import { TaskService } from '@/app/shared/services/task.services';
 import { computed, inject, Injectable } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import {
@@ -9,9 +11,6 @@ import {
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
-
-import { CreateTaskDto, UpdateTaskDto } from '../../models/task.model';
-import { TaskService } from '../../services/task.services';
 import { initialTaskState } from './task.state';
 
 export const TaskStore = signalStore(
