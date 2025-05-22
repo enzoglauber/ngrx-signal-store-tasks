@@ -1,0 +1,21 @@
+<aside class="bg-gray-800 text-white h-full w-64 min-h-screen">
+  <div class="p-4">
+    <h1 class="text-xl font-bold">Signal Store</h1>
+  </div>
+
+  <nav class="mt-6">
+    <ul>
+      @for (item of items; track item.label) {
+      <li class="mb-2">
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="bg-gray-700"
+          class="flex items-center px-4 py-3 hover:bg-gray-700 transition-colors rounded-md"
+        >
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+      }
+    </ul>
+  </nav>
+</aside>

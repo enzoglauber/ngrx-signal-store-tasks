@@ -1,34 +1,74 @@
-<div class="container">
-  <h2>Lista de Tarefas</h2>
+<div class="container mx-auto p-4">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Lista de Tarefas</h2>
 
-  <div class="actions">
-    <button (click)="createNewTask()">Nova Tarefa</button>
+  <div class="mb-4">
+    <button
+      (click)="createNewTask()"
+      class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded shadow"
+    >
+      Nova Tarefa
+    </button>
   </div>
 
-  <div *ngIf="taskStore.loading()">Carregando...</div>
+  <div *ngIf="taskStore.loading()" class="text-gray-600 mb-2">
+    Carregando...
+  </div>
 
-  <div *ngIf="taskStore.error()" class="error">
+  <div
+    *ngIf="taskStore.error()"
+    class="bg-red-100 text-red-700 p-3 rounded mb-4 border border-red-300"
+  >
     Erro: {{ taskStore.error() }}
   </div>
 
-  <table *ngIf="!taskStore.loading() && taskStore.tasks().length > 0">
-    <thead>
+  <table
+    *ngIf="!taskStore.loading() && taskStore.tasks().length > 0"
+    class="min-w-full bg-white border border-gray-200 shadow-sm rounded"
+  >
+    <thead class="bg-gray-100 text-left text-gray-700 uppercase text-sm">
       <tr>
-        <th>Título</th>
-        <th>Descrição</th>
-        <th>Status</th>
-        <th>Ações</th>
+        <th class="px-4 py-2 border-b">Título</th>
+        <th class="px-4 py-2 border-b">Descrição</th>
+        <th class="px-4 py-2 border-b">Status</th>
+        <th class="px-4 py-2 border-b">Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of taskStore.tasks()">
-        <td>{{ task.title }}</td>
-        <td>{{ task.description }}</td>
-        <td>{{ task.completed ? "Completa" : "Pendente" }}</td>
-        <td>
-          <button (click)="viewTask(task.id)">Ver</button>
-          <button (click)="editTask(task.id)">Editar</button>
-          <button (click)="deleteTask(task.id)">Excluir</button>
+      <tr
+        *ngFor="let task of taskStore.tasks()"
+        class="hover:bg-gray-50 border-b"
+      >
+        <td class="px-4 py-2">{{ task.title }}</td>
+        <td class="px-4 py-2">{{ task.description }}</td>
+        <td class="px-4 py-2">
+          <span
+            [ngClass]="{
+              'text-green-600 font-semibold': task.completed,
+              'text-yellow-600 font-semibold': !task.completed
+            }"
+          >
+            {{ task.completed ? "Completa" : "Pendente" }}
+          </span>
+        </td>
+        <td class="px-4 py-2 space-x-2">
+          <button
+            (click)="viewTask(task.id)"
+            class="text-blue-600 hover:underline"
+          >
+            Ver
+          </button>
+          <button
+            (click)="editTask(task.id)"
+            class="text-yellow-600 hover:underline"
+          >
+            Editar
+          </button>
+          <button
+            (click)="deleteTask(task.id)"
+            class="text-red-600 hover:underline"
+          >
+            Excluir
+          </button>
         </td>
       </tr>
     </tbody>
@@ -36,7 +76,7 @@
 
   <div
     *ngIf="!taskStore.loading() && taskStore.tasks().length === 0"
-    class="no-data"
+    class="text-center text-gray-500 mt-4"
   >
     Nenhuma tarefa encontrada.
   </div>

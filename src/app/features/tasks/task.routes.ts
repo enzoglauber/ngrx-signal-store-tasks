@@ -14,6 +14,13 @@ export const taskRoutes: Routes = [
           ),
       },
       {
+        path: 'new',
+        loadComponent: () =>
+          import('./task-form/task-form.component').then(
+            (m) => m.TaskFormComponent
+          ),
+      },
+      {
         path: ':id',
         loadComponent: () =>
           import('./task-detail/task-detail.component').then(

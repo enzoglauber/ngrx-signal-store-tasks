@@ -1,57 +1,84 @@
-<div class="container">
-  <h2>Detalhes da Tarefa</h2>
+<div class="container mx-auto p-4 max-w-2xl">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Detalhes da Tarefa</h2>
 
-  <div *ngIf="taskStore.loading()">Carregando...</div>
+  <div *ngIf="taskStore.loading()" class="text-gray-600 mb-2">
+    Carregando...
+  </div>
 
-  <div *ngIf="taskStore.error()" class="error">
+  <div
+    *ngIf="taskStore.error()"
+    class="bg-red-100 text-red-700 p-3 rounded mb-4 border border-red-300"
+  >
     Erro: {{ taskStore.error() }}
   </div>
 
   <div
     *ngIf="!taskStore.loading() && taskStore.selectedTask()"
-    class="task-details"
+    class="bg-white shadow rounded p-4 space-y-4"
   >
-    <div class="detail-row">
-      <span class="label">Título:</span>
-      <span class="value">{{ taskStore.selectedTask()?.title }}</span>
+    <div class="flex justify-between">
+      <span class="font-semibold text-gray-700">Título:</span>
+      <span class="text-gray-900">{{ taskStore.selectedTask()?.title }}</span>
     </div>
 
-    <div class="detail-row">
-      <span class="label">Descrição:</span>
-      <span class="value">{{ taskStore.selectedTask()?.description }}</span>
-    </div>
-
-    <div class="detail-row">
-      <span class="label">Status:</span>
-      <span class="value">{{
-        taskStore.selectedTask()?.completed ? "Completa" : "Pendente"
+    <div class="flex justify-between">
+      <span class="font-semibold text-gray-700">Descrição:</span>
+      <span class="text-gray-900">{{
+        taskStore.selectedTask()?.description
       }}</span>
     </div>
 
-    <div class="detail-row">
-      <span class="label">Criada em:</span>
-      <span class="value">{{
+    <div class="flex justify-between">
+      <span class="font-semibold text-gray-700">Status:</span>
+      <span
+        [ngClass]="{
+          'text-green-600 font-semibold': taskStore.selectedTask()?.completed,
+          'text-yellow-600 font-semibold': !taskStore.selectedTask()?.completed
+        }"
+      >
+        {{ taskStore.selectedTask()?.completed ? "Completa" : "Pendente" }}
+      </span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="font-semibold text-gray-700">Criada em:</span>
+      <span class="text-gray-900">{{
         taskStore.selectedTask()?.createdAt | date : "dd/MM/yyyy HH:mm"
       }}</span>
     </div>
 
-    <div class="detail-row">
-      <span class="label">Atualizada em:</span>
-      <span class="value">{{
+    <div class="flex justify-between">
+      <span class="font-semibold text-gray-700">Atualizada em:</span>
+      <span class="text-gray-900">{{
         taskStore.selectedTask()?.updatedAt | date : "dd/MM/yyyy HH:mm"
       }}</span>
     </div>
 
-    <div class="actions">
-      <button (click)="editTask()">Editar</button>
-      <button (click)="deleteTask()">Excluir</button>
-      <button (click)="goBack()">Voltar</button>
+    <div class="pt-4 flex gap-3 justify-end">
+      <button
+        (click)="editTask()"
+        class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded"
+      >
+        Editar
+      </button>
+      <button
+        (click)="deleteTask()"
+        class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded"
+      >
+        Excluir
+      </button>
+      <button
+        (click)="goBack()"
+        class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded"
+      >
+        Voltar
+      </button>
     </div>
   </div>
 
   <div
     *ngIf="!taskStore.loading() && !taskStore.selectedTask()"
-    class="no-data"
+    class="text-center text-gray-500 mt-4"
   >
     Tarefa não encontrada.
   </div>

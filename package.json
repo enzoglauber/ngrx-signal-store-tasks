@@ -25,9 +25,12 @@
     "@ngrx/operators": "^19.2.0",
     "@ngrx/signals": "^19.2.0",
     "@ngrx/store": "^19.2.0",
+    "@tailwindcss/postcss": "^4.1.7",
     "express": "^4.18.2",
     "json-server": "^1.0.0-beta.3",
+    "postcss": "^8.5.3",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

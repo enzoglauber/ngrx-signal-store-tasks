@@ -1,9 +1,16 @@
-<div class="container">
-  <h2>{{ isEditMode ? "Editar Tarefa" : "Nova Tarefa" }}</h2>
+<div class="container mx-auto max-w-xl p-4">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">
+    {{ isEditMode ? "Editar Tarefa" : "Nova Tarefa" }}
+  </h2>
 
-  <div *ngIf="taskStore.loading()">Carregando...</div>
+  <div *ngIf="taskStore.loading()" class="text-gray-600 mb-2">
+    Carregando...
+  </div>
 
-  <div *ngIf="taskStore.error()" class="error">
+  <div
+    *ngIf="taskStore.error()"
+    class="bg-red-100 text-red-700 p-3 rounded mb-4 border border-red-300"
+  >
     Erro: {{ taskStore.error() }}
   </div>
 
@@ -11,18 +18,22 @@
     [formGroup]="taskForm"
     (ngSubmit)="onSubmit()"
     *ngIf="!taskStore.loading()"
+    class="bg-white p-6 shadow rounded space-y-5"
   >
-    <div class="form-group">
-      <label for="title">Título *</label>
+    <!-- TÍTULO -->
+    <div>
+      <label for="title" class="block text-sm font-medium text-gray-700 mb-1"
+        >Título *</label
+      >
       <input
         type="text"
         id="title"
         formControlName="title"
-        class="form-control"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <div
         *ngIf="submitted && taskForm.get('title')?.errors"
-        class="validation-error"
+        class="text-sm text-red-600 mt-1"
       >
         <div *ngIf="taskForm.get('title')?.errors?.['required']">
           Título é obrigatório
@@ -30,28 +41,48 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="description">Descrição</label>
+    <!-- DESCRIÇÃO -->
+    <div>
+      <label
+        for="description"
+        class="block text-sm font-medium text-gray-700 mb-1"
+        >Descrição</label
+      >
       <textarea
         id="description"
         formControlName="description"
-        class="form-control"
         rows="4"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
       ></textarea>
     </div>
 
-    <div class="form-group checkbox">
-      <label>
-        <input type="checkbox" formControlName="completed" />
-        Tarefa completada
-      </label>
+    <!-- CHECKBOX -->
+    <div class="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        id="completed"
+        formControlName="completed"
+        class="h-4 w-4 text-blue-600 border-gray-300 rounded"
+      />
+      <label for="completed" class="text-gray-700">Tarefa completada</label>
     </div>
 
-    <div class="form-actions">
-      <button type="submit" [disabled]="submitting">
+    <!-- BOTÕES -->
+    <div class="pt-4 flex gap-3 justify-end">
+      <button
+        type="submit"
+        [disabled]="submitting"
+        class="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-medium py-2 px-4 rounded"
+      >
         {{ submitting ? "Salvando..." : "Salvar" }}
       </button>
-      <button type="button" (click)="cancel()">Cancelar</button>
+      <button
+        type="button"
+        (click)="cancel()"
+        class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded"
+      >
+        Cancelar
+      </button>
     </div>
   </form>
 </div>
